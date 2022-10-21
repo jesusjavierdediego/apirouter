@@ -1,0 +1,5 @@
+apirouter
+*/*.xml
+**/mysql/
+**/gitea/
+**/mongo-volume/

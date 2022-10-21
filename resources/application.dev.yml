@@ -1,0 +1,63 @@
+--- 
+  profile: dev
+
+  admindb:
+    host: 127.0.0.1
+    port: 3306
+    dbname: xqledgeradmindb
+    username: gitea
+    password: gitea
+
+  grpcresponse: 
+    alreadyexists: ALREADY_EXISTS
+    cancelled: CANCELLED
+    internal: INTERNAL
+    invalid: INVALID_ARGUMENT
+    notavailable: UNAVAILABLE
+    notfound: NOT_FOUND
+    notimplemented: UNIMPLEMENTED
+    ok: OK
+    permissiondenied: PERMISSION_DENIED
+    unauthenticated: UNAUTHENTICATED
+
+  grpcclient: 
+    gitreaderhost: localhost
+    gitreaderport: 50053
+    rdbreaderhost: localhost
+    rdbreaderport: 50054
+    timeout: 60
+
+  kafka: 
+    alerttopic: outgoing_alert
+    autooffset: earliest
+    bootstrapserver: "127.0.0.1:9094"
+    groupid: APIRouterCG
+    eventschannelenabled: true
+    githandlerecordtopic: gitoperator-in
+    githandlebatchtopic: gitoperator-batch-in
+    gitactionbacktopic: gitoperator-out
+    gitdeletetopic: gitoperator-del
+    # messagemaxsize: 10e6
+    # messageminsize: 10e3
+    partitioneofenabled: true
+    rebalanceenabled: true
+    sessiontimeout: 5000
+  
+  rest: 
+    mode: debug
+    path: xqledger/v1
+    port: 8081
+    apikeyheadername: "X-API-KEY"
+  
+
+  gitserver:
+    url: http://localhost:3000/api/v1
+    # url: http://git-db:3000/api/v1
+    authtoken: token 673af4a51987715e1ec5a41cd8e1742437b5ba19
+    username: TestOrchestrator
+    password: TestOrchestrator
+    email: testorchestrator@xqledger.com
+    strategy:
+      timeout: 10000
+      deletebranchaftermerge: true
+      forcemerge: true

@@ -1,0 +1,574 @@
+openapi: 3.0.1
+info:
+  title: XQLedger API
+  description: "REST-like API to access to the main functionalities of the XQLedger node"
+  termsOfService: http://swagger.io/terms/
+  contact:
+    email: jesus.dediego.erles@gmail.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.0
+servers:
+- url: http://localhost:8081/api/v1/
+tags:
+- name: administration
+  description: Everything to manage XQLedger
+  externalDocs:
+    description: Find out more
+    url: http://github.io/xqledger/management
+- name: datahandling
+  description: Regular operations with XQLedger
+  externalDocs:
+    description: Find out more
+    url: http://github.io/xqledger/datahandling
+- name: history
+  description: Operations with history of events in XQLedger
+  externalDocs:
+    description: Find out more
+    url: http://github.io/xqledger/history
+paths:
+  /admin/info:
+    get:
+      tags:
+      - administration
+      summary: Get the info about a specific account including databases, collections and quota
+      operationId: getAccountInfo
+      requestBody:
+        description: Get the info about a specific account
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Pet'
+        required: true
+      responses:
+        405:
+          description: Invalid input
+          content: {}
+      x-codegen-request-body-name: body
+  /query:
+    post:
+      tags:
+      - datahandling
+      summary: Send a BSON query to an XQLedger Database collection to get a list of matching records
+      operationId: sendQuery
+      requestBody:
+        description: Pet object that needs to be added to the store
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Pet'
+        required: true
+      responses:
+        405:
+          description: Invalid input
+          content: {}
+      x-codegen-request-body-name: body
+  /recorddiff:
+    get:
+      tags:
+      - history
+      summary: Get the differences between two events of a record
+      operationId: getRecordDiff
+      requestBody:
+        description: Pet object that needs to be added to the store
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Pet'
+        required: true
+      responses:
+        405:
+          description: Invalid input
+          content: {}
+      x-codegen-request-body-name: body
+  /recordevent:
+    get:
+      tags:
+      - history
+      summary: Get a record in the past
+      operationId: getRecordEvent
+      requestBody:
+        description: Pet object that needs to be added to the store
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Pet'
+        required: true
+      responses:
+        405:
+          description: Invalid input
+          content: {}
+      x-codegen-request-body-name: body
+  /recordhistory:
+    get:
+      tags:
+      - history
+      summary: Get the history of events affecting to a record
+      operationId: getRecordHistory
+      requestBody:
+        description: Pet object that needs to be added to the store
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Pet'
+        required: true
+      responses:
+        405:
+          description: Invalid input
+          content: {}
+      x-codegen-request-body-name: body
+  /record:
+    post:
+      tags:
+      - datahandling
+      summary: Create a new record in a collection in a XQLedger DB
+      operationId: newRecord
+      requestBody:
+        description: Pet object that needs to be added to the store
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Pet'
+        required: true
+      responses:
+        405:
+          description: Invalid input
+          content: {}
+      x-codegen-request-body-name: body
+    put:
+      tags:
+      - datahandling
+      summary: Update a record in XQLedger
+      operationId: updateRecord
+      requestBody:
+        description: Pet object that needs to be added to the store
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Pet'
+        required: true
+      responses:
+        405:
+          description: Invalid input
+          content: {}
+      x-codegen-request-body-name: body
+    delete:
+      tags:
+      - datahandling
+      summary: Remove an existing record in XQLedger
+      operationId: deleteRecord
+      requestBody:
+        description: Pet object that needs to be added to the store
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Pet'
+        required: true
+      responses:
+        405:
+          description: Invalid input
+          content: {}
+      x-codegen-request-body-name: body
+    get:
+      tags:
+      - datahandling
+      summary: Get a record in a collection in an XQLedger DB
+      operationId: getRecord
+      requestBody:
+        description: Pet object that needs to be added to the store
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Pet'
+        required: true
+      responses:
+        405:
+          description: Invalid input
+          content: {}
+      x-codegen-request-body-name: body
+  /batch:
+    post:
+      tags:
+      - datahandling
+      summary: Get the list of tenants in XQLedger
+      operationId: addBatch
+      requestBody:
+        description: Pet object that needs to be added to the store
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Pet'
+        required: true
+      responses:
+        405:
+          description: Invalid input
+          content: {}
+      x-codegen-request-body-name: body
+    put:
+      tags:
+      - datahandling
+      summary: Get the list of tenants in XQLedger
+      operationId: updateBatch
+      requestBody:
+        description: Pet object that needs to be added to the store
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Pet'
+        required: true
+      responses:
+        405:
+          description: Invalid input
+          content: {}
+      x-codegen-request-body-name: body
+  /tenants:
+    get:
+      tags:
+      - administration
+      summary: Get the list of tenants in XQLedger
+      operationId: getTenants
+      requestBody:
+        description: Pet object that needs to be added to the store
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Pet'
+        required: true
+      responses:
+        405:
+          description: Invalid input
+          content: {}
+      x-codegen-request-body-name: body
+  /recordcount:
+    get:
+      tags:
+      - administration
+      summary: Gets the total amount of records for a specific collection
+      operationId: getrecordcount
+      parameters:
+      - name: status
+        in: query
+        description: Status values that need to be considered for filter
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: array
+          items:
+            type: string
+            default: available
+            enum:
+            - available
+            - pending
+            - sold
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Pet'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Pet'
+        400:
+          description: Invalid status value
+          content: {}
+  /ledger:
+    post:
+      tags:
+      - administration
+      summary: Creates a new original ledger
+      operationId: newledger
+      parameters:
+      - name: status
+        in: query
+        description: Status values that need to be considered for filter
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: array
+          items:
+            type: string
+            default: available
+            enum:
+            - available
+            - pending
+            - sold
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Pet'
+        400:
+          description: Invalid status value
+          content: {}
+  /ledgercopy:
+    post:
+      tags:
+      - administration
+      summary: Creates a new copy of the current original ledger
+      operationId: copydatabase
+      parameters:
+      - name: status
+        in: query
+        description: Status values that need to be considered for filter
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: array
+          items:
+            type: string
+            default: available
+            enum:
+            - available
+            - pending
+            - sold
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Pet'
+        400:
+          description: Invalid status value
+          content: {}
+  /session:
+    get:
+      tags:
+      - datahandling
+      summary: Gets the active sessions for a database
+      operationId: getssessions
+      parameters:
+      - name: status
+        in: query
+        description: Status values that need to be considered for filter
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: array
+          items:
+            type: string
+            default: available
+            enum:
+            - available
+            - pending
+            - sold
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Pet'
+        400:
+          description: Invalid status value
+          content: {}
+    post:
+      tags:
+      - datahandling
+      summary: Creates a new session as a spin off of the origin ledger
+      operationId: newsession
+      parameters:
+      - name: status
+        in: query
+        description: Status values that need to be considered for filter
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: array
+          items:
+            type: string
+            default: available
+            enum:
+            - available
+            - pending
+            - sold
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Pet'
+        400:
+          description: Invalid status value
+          content: {}
+    delete:
+      tags:
+      - datahandling
+      summary: Closes session and commit changes in the origin ledger
+      operationId: commitsession
+      parameters:
+      - name: status
+        in: query
+        description: Status values that need to be considered for filter
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: array
+          items:
+            type: string
+            default: available
+            enum:
+            - available
+            - pending
+            - sold
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Pet'
+        400:
+          description: Invalid status value
+          content: {}
+components:
+  schemas:
+    Order:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        petId:
+          type: integer
+          format: int64
+        quantity:
+          type: integer
+          format: int32
+        shipDate:
+          type: string
+          format: date-time
+        status:
+          type: string
+          description: Order Status
+          enum:
+          - placed
+          - approved
+          - delivered
+        complete:
+          type: boolean
+          default: false
+      xml:
+        name: Order
+    Category:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+      xml:
+        name: Category
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        username:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        email:
+          type: string
+        password:
+          type: string
+        phone:
+          type: string
+        userStatus:
+          type: integer
+          description: User Status
+          format: int32
+      xml:
+        name: User
+    Tag:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+      xml:
+        name: Tag
+    Pet:
+      required:
+      - name
+      - photoUrls
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        category:
+          $ref: '#/components/schemas/Category'
+        name:
+          type: string
+          example: doggie
+        photoUrls:
+          type: array
+          xml:
+            name: photoUrl
+            wrapped: true
+          items:
+            type: string
+        tags:
+          type: array
+          xml:
+            name: tag
+            wrapped: true
+          items:
+            $ref: '#/components/schemas/Tag'
+        status:
+          type: string
+          description: pet status in the store
+          enum:
+          - available
+          - pending
+          - sold
+      xml:
+        name: Pet
+    ApiResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+          format: int32
+        type:
+          type: string
+        message:
+          type: string
+  securitySchemes:
+    api_key:
+      type: apiKey
+      name: api-key
+      in: header

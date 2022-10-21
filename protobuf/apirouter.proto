@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+package apirouterproto;
+
+option go_package = ".;protobuf";
+option optimize_for = SPEED;
+/*
+	Generate the Go code from the events.proto file using the protobuf folder as the output destination:
+	'protoc -I=./protobuf --go_out=plugins=grpc:./protobuf ./protobuf/apirouter.proto'
+*/
+
+message RecordSetStream {
+    repeated string records = 1;
+}
+
+message RecordNumber {
+    int64 numberrecords = 1;
+}
+
+message DBCollection {
+    string database = 1;
+    string collection = 2;
+}
+
+message Empty {}
+
+service RecordStreamService {
+    rpc GetTotalRecordSet(DBCollection) returns (stream RecordSetStream){}
+    rpc GetTotalRecordNumber(DBCollection) returns (stream RecordNumber){}
+    rpc GetCompletedRecordNumber(DBCollection) returns (stream RecordNumber){}
+    rpc GetErrorRecordNumber(DBCollection) returns (stream RecordNumber){}
+}
+
